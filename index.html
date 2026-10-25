@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0b1021">
+<title>Multiverso Arena — Todos contra todos</title><link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span class="brand-icon">✦</span><span><b>MULTIVERSO ARENA</b><small>LIVE BATTLE · PIXEL EDITION</small></span></a>
+  <div class="live"><i></i> ARENA ABIERTA <span class="demo">DEMO</span></div>
+  <div class="wallet">🪙 <b id="coins">1.000</b><small>MONEDAS</small></div>
+</header>
+<main class="layout">
+  <aside class="sidebar">
+    <div class="side-title">PORTALES DE UNIVERSO <span>✦</span></div>
+    <p class="sub">Elige de qué mundo quieres conseguir personajes.</p>
+    <button class="universe active" data-universe="pokemon"><span class="universe-icon pokemon">✦</span><span><b>POKÉMON</b><small>Criaturas y elementos</small></span><strong>›</strong></button>
+    <button class="universe" data-universe="dinos"><span class="universe-icon dinos">♜</span><span><b>DINOSAURIOS</b><small>Gigantes prehistóricos</small></span><strong>›</strong></button>
+    <button class="universe" data-universe="cartoon"><span class="universe-icon cartoon">✹</span><span><b>DIBUJOS / SERIES</b><small>Héroes y villanos</small></span><strong>›</strong></button>
+    <button class="universe" data-universe="games"><span class="universe-icon games">▣</span><span><b>VIDEOJUEGOS</b><small>Personajes de juegos</small></span><strong>›</strong></button>
+    <div class="side-divider"></div>
+    <div class="side-title">TU PERFIL <span>◈</span></div>
+    <div class="profile"><span class="avatar">👾</span><div><b>Invitado Pixel</b><small>Cuenta local de prueba</small></div></div>
+    <div class="mini-stat"><span>Personajes desbloqueados</span><b id="ownedCount">0</b></div>
+    <div class="mini-stat"><span>Participantes en arena</span><b id="playerCount">12 / 60</b></div>
+    <div class="notice">⚠️ <b>Versión demo:</b> los participantes son simulados. La conexión a TikTok LIVE se añade después.</div>
+  </aside>
+
+  <section class="main">
+    <div class="hero">
+      <div><p class="eyebrow">UNA SOLA ARENA · MUCHOS UNIVERSOS</p><h1>TODOS CONTRA <span>TODOS</span></h1><p>Desbloquea tu personaje y entra al minimapa. ¡Sobrevive, ataca y sube en la clasificación!</p></div>
+      <div class="round"><small>RONDA</small><b id="round">01</b><span>BATALLA LIBRE</span></div>
+    </div>
+
+    <section class="arena-card">
+      <div class="arena-head"><div><i class="live-dot"></i><b>MINIMAPA DE COMBATE</b><span class="tag">FREE FOR ALL</span></div><div class="arena-count">👥 <b id="arenaCount">12</b><small> / 60 JUGADORES</small></div></div>
+      <div class="map-selector" aria-label="Seleccionar minimapa"><button class="map-choice" data-map="aquatic">🌊 Acuático</button><button class="map-choice" data-map="ruins">🏛️ Ruinas</button><button class="map-choice" data-map="forest">🌲 Bosque</button><button class="map-choice" data-map="valley">⛰️ Valle</button></div><div class="arena" id="arena">
+        <div class="arena-background"></div><div class="arena-decoration pond"></div><div class="arena-decoration rock"></div><div class="arena-decoration bush bush1"></div><div class="arena-decoration bush bush2"></div><div class="arena-decoration bush bush3"></div>
+        <div class="arena-center">FIGHT!</div>
+        <div class="arena-feed" id="arenaFeed">¡La batalla está por comenzar!</div>
+      </div>
+      <div class="arena-footer"><span><i class="legend-dot blue"></i> Tu personaje</span><span><i class="legend-dot red"></i> Rivales</span><span><i class="legend-dot gold"></i> Evento / regalo</span><span class="map-note">Los personajes se mueven y atacan automáticamente en la demo.</span></div>
+    </section>
+
+    <div class="below-grid">
+      <section class="panel unlock-panel">
+        <div class="panel-heading"><div><span class="heading-icon">🎁</span><div><h2>CAJA ALEATORIA</h2><small id="boxUniverseName">UNIVERSO: POKÉMON</small></div></div><span class="price">100 🪙</span></div>
+        <p class="muted">El portal seleccionado determina de qué universo sale el personaje. Cada apertura desbloquea uno aleatorio.</p>
+        <div class="crate-row"><div class="crate">?</div><div><b id="crateTitle">Caja misteriosa Pokémon</b><small>Puede salir común, raro, épico o legendario.</small><div class="rarity"><span>COMÚN</span><span>RARO</span><span>ÉPICO</span><span>LEGENDARIO</span></div></div></div>
+        <button id="unlock" class="primary">✦ DESBLOQUEAR PERSONAJE · 100 MONEDAS</button>
+        <div id="unlockResult" class="result">Elige un universo y abre tu primera caja.</div>
+      </section>
+      <section class="panel roster-panel">
+        <div class="panel-heading"><div><span class="heading-icon">▦</span><div><h2>TUS PERSONAJES</h2><small>PERSONAJES DESBLOQUEADOS</small></div></div><span class="counter" id="rosterCounter">0</span></div>
+        <div id="roster" class="roster empty"><div class="empty-roster">🔒<b>Tu colección empieza aquí</b><small>Desbloquea un personaje por 100 monedas.</small></div></div>
+      </section>
+      <section class="panel community-panel">
+        <div class="panel-heading"><div><span class="heading-icon">💬</span><div><h2>PARTICIPA EN LIVE</h2><small>CONTROLES DE PRUEBA</small></div></div></div>
+        <div class="action-buttons">
+          <button id="tapTap" class="action pink">💗 <span><b>TAP TAP</b><small>+1 vida a tu personaje</small></span></button>
+          <button id="gift" class="action purple">🎁 <span><b>REGALO DE PRUEBA</b><small>Activa un ataque especial</small></span></button>
+          <button id="join" class="action blue-action">➕ <span><b>UNIRSE A LA ARENA</b><small>Entra con tu personaje seleccionado</small></span></button>
+        </div>
+        <div class="mini-chat"><div class="chat-title">ACTIVIDAD RECIENTE <span>DEMO</span></div><div id="chatLog"><p>◆ <b>Sistema:</b> La arena está abierta.</p><p>💬 <b>PixelMia:</b> ¡A luchar!</p></div><form id="chatForm"><input id="chatInput" maxlength="80" placeholder="Comenta algo…"><button>➤</button></form></div>
+      </section>
+    </div>
+    <section class="leaderboard panel">
+      <div class="panel-heading"><div><span class="heading-icon">🏆</span><div><h2>SUPERVIVIENTES</h2><small>CLASIFICACIÓN DE LA RONDA</small></div></div><span class="counter">TOP 5</span></div>
+      <div class="leaders" id="leaders"></div>
+    </section>
+    <footer><span>✦ MULTIVERSO ARENA</span><span>PROTOTIPO LOCAL · MONEDAS SIN VALOR REAL</span><span>SPRITES PROVISIONALES</span></footer>
+  </section>
+</main>
+<div id="toast" class="toast"></div>
+<script src="app.js"></script>
+</body></html>
